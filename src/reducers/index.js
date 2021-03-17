@@ -41,14 +41,12 @@ export const reducer = (state = initialState, action) => {
 
             };
         case REMOVE_FEATURE:
-            state.car.features.splice(action.payload - 1, 1)
+            const newArr = state.car.features.filter(carFeature => carFeature.id !== action.payload)
             return {
                 ...state,
                 car: {
                     ...state.car,
-                    features: [
-                        ...state.car.features
-                    ]
+                    features: newArr
                 },
                 additionalPrice: (state.additionalPrice - state.additionalFeatures[action.payload - 1].price)
 
