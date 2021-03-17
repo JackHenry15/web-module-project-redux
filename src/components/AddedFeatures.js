@@ -10,9 +10,9 @@ class AddedFeatures extends React.Component {
   return (
     <div className="content">
       <h6>Added features:</h6>
-      {this.props.car.features.length ? (
+      {this.props.addedFeatures.length ? (
         <ol type="1">
-          {this.props.car.features.map(item => (
+          {this.props.addedFeatures.map(item => (
             <AddedFeature key={item.id} feature={item} />
           ))}
         </ol>
@@ -27,7 +27,7 @@ class AddedFeatures extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    car: state.car,
+    addedFeatures: state.car.features,
   }
 }
 

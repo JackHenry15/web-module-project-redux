@@ -1,4 +1,4 @@
-import { ADD_FEATURE, REMOVE_FEATURE } from "../actions";
+import { ADD_FEATURE, REMOVE_FEATURE} from "../actions";
 
 
 
@@ -33,24 +33,27 @@ export const reducer = (state = initialState, action) => {
                     ...state.car,
                     features: [
                         ...state.car.features,
-                        state.additionalFeatures[action.payload] 
+                        state.additionalFeatures[action.payload - 1] 
                     ]
                 },
-                // additionalPrice: (state.additionalPrice + state.additionalFeatures[action.payload] ),
+                additionalPrice: (state.additionalPrice + state.additionalFeatures[action.payload - 1].price)
+
 
             };
         case REMOVE_FEATURE:
+            state.car.features.splice(action.payload - 1, 1)
             return {
                 ...state,
                 car: {
                     ...state.car,
                     features: [
-                        ...state.car.features.splice(action.payload, 1)
+                        ...state.car.features
                     ]
                 },
-                // additionalPrice: (state.additionalPrice + state.additionalFeatures[action.payload] ),
+                additionalPrice: (state.additionalPrice - state.additionalFeatures[action.payload - 1].price)
 
             }
+
         default:
             return state;
     }

@@ -8,6 +8,7 @@ class AdditionalFeature extends React.Component {
 
 
   render(){
+    // console.log(this.props.feature);
     return (
       <li>
         {/* Add an onClick that will let you add a feature to your car */}
@@ -21,7 +22,6 @@ class AdditionalFeature extends React.Component {
 const mapStateToProps = (state) => {
   return {
     car: state.car,
-
   }
 }
 
